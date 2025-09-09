@@ -1,0 +1,12 @@
+static_tf_from_yaml:
+  ros__parameters:
+    transforms:
+      - frame_id: base_link
+        child_frame_id: lidar_frame
+        translation: [0.03, -0.004, 0.195]
+        rotation_rpy: [0.0, 0.0, 1.5708]
+
+      - frame_id: base_link
+        child_frame_id: imu_link
+        translation: [-0.03, -0.004, 0.168]
+        rotation_rpy: [0.0, 0.0, 0.0]
