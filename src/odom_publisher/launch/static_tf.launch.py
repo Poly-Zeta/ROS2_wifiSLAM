@@ -5,7 +5,7 @@ import os
 
 def generate_launch_description():
     pkg_share = get_package_share_directory('odom_publisher')
-    params_file = os.path.join(pkg_share, 'config', 'tf_static.yaml')
+    params = os.path.join(pkg_share, 'config', 'tf_static.yaml')
 
     return LaunchDescription([
         Node(
@@ -13,6 +13,6 @@ def generate_launch_description():
             executable='static_tf_from_yaml',
             name='static_tf_from_yaml',
             output='screen',
-            parameters=[params_file]
+            parameters=[str(params)]
         )
     ])

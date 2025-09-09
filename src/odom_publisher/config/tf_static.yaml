@@ -1,12 +1,23 @@
+# static_tf_from_yaml:
+#   ros__parameters:
+#     transforms.0.frame_id: base_link
+#     transforms.0.child_frame_id: laser
+#     transforms.0.translation: [0.03, -0.004, 0.195]
+#     transforms.0.rotation_rpy: [0.0, 0.0, 1.5708]
+
+#     transforms.1.frame_id: base_link
+#     transforms.1.child_frame_id: imu_link
+#     transforms.1.translation: [-0.03, -0.004, 0.168]
+#     transforms.1.rotation_rpy: [0.0, 0.0, 0.0]
 static_tf_from_yaml:
   ros__parameters:
-    transforms:
-      - frame_id: base_link
-        child_frame_id: lidar_frame
-        translation: [0.03, -0.004, 0.195]
-        rotation_rpy: [0.0, 0.0, 1.5708]
-
-      - frame_id: base_link
-        child_frame_id: imu_link
-        translation: [-0.03, -0.004, 0.168]
-        rotation_rpy: [0.0, 0.0, 0.0]
+    0:
+      transforms.frame_id: base_link
+      transforms.child_frame_id: laser
+      transforms.translation: [0.03, -0.004, 0.195]
+      transforms.rotation_rpy: [0.0, 0.0, 1.5708]
+    1:
+      transforms.frame_id: base_link
+      transforms.child_frame_id: imu_link
+      transforms.translation: [-0.03, -0.004, 0.168]
+      transforms.rotation_rpy: [0.0, 0.0, 0.0]
