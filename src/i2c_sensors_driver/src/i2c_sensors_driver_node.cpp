@@ -118,15 +118,14 @@ void I2CsensorsDriver::onTimer(){
     mag_pub_->publish(msg_mag);
 
     //パルスカウンタ
-    // 左車輪カウンタ
-    std_msgs::msg::Int32 msg_l;
-    msg_l.data = static_cast<int32_t>(dataBuff[19]);
-    l_wheel_count_pub_->publish(msg_l);
-
     // 右車輪カウンタ
     std_msgs::msg::Int32 msg_r;
-    msg_r.data = static_cast<int32_t>(dataBuff[20]);
+    msg_r.data = static_cast<int32_t>(dataBuff[19]);
     r_wheel_count_pub_->publish(msg_r);
+    // 左車輪カウンタ
+    std_msgs::msg::Int32 msg_l;
+    msg_l.data = static_cast<int32_t>(dataBuff[20]);
+    l_wheel_count_pub_->publish(msg_l);
 
     //温度
     sensor_msgs::msg::Temperature msg_temp;
