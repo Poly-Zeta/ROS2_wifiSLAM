@@ -1,0 +1,26 @@
+slam_toolbox:
+  ros__parameters:
+
+    # Plugin params
+    # solver_plugin: solver_plugins::CeresSolver
+    # ceres_linear_solver: SPARSE_NORMAL_CHOLESKY
+    # ceres_preconditioner: SCHUR_JACOBI
+    # ceres_trust_strategy: LEVENBERG_MARQUARDT
+    # ceres_dogleg_type: TRADITIONAL_DOGLEG
+    # ceres_loss_function: None
+
+    # ROS Parameters
+    odom_frame: odom
+    map_frame: map
+    base_frame: base_link
+    # scan_topic: /scan
+    scan_topic: /scan_reversed
+    # use_map_saver: true
+    # mode: mapping #localization
+
+    # debug_logging: false
+    # enable_interactive_mode: true
+
+    # General Parameters
+    use_scan_matching: true
+    # use_scan_barycenter: true
