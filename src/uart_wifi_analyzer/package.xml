@@ -2,8 +2,7 @@
 <package format="3">
   <name>uart_wifi_analyzer</name>
   <version>0.0.1</version>
-  <description>UART data analyzer node for WiFi device output</description>
-
+  <description>Auto-generated package.xml for uart_wifi_analyzer</description>
   <maintainer email="user@example.com">Your Name</maintainer>
   <license>Apache-2.0</license>
 
