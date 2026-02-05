@@ -46,11 +46,11 @@ def generate_launch_description():
             )
         ),
 
-        # ros2serial_arduino
+        # serial_cmdvel_bridge
         Node(
-            package='ros2serial_arduino',
-            executable='serial_send_node',
-            name='ros2serial_arduino',
+            package='serial_cmdvel_bridge',
+            executable='serial_cmdvel_bridge_main',
+            name='serial_cmdvel_bridge',
             output='screen'
         ),
 
