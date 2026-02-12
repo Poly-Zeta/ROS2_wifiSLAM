@@ -1,11 +1,11 @@
 #include "image_binarizer/image_binarizer.hpp"
 #include "sensor_msgs/msg/image.hpp"
-#include <cv_bridge/cv_bridge.h>
+#include <cv_bridge/cv_bridge.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 
 ImageBinarizer::ImageBinarizer(const std::string & node_name,const rclcpp::NodeOptions & node_options) : rclcpp::Node(node_name,node_options){
 
-    image_topic_ =this->declare_parameter<std::string>("image_topic","/image_raw");
+    image_topic_ =this->declare_parameter<std::string>("image_topic","/camera/image_raw");
 
     binImage_topic_ =this->declare_parameter<std::string>("bin_image_topic","/image_binary");
 
