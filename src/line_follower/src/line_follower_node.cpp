@@ -1,7 +1,7 @@
 #include "line_follower/line_follower.hpp"
 #include <sensor_msgs/msg/image.hpp>
 #include <geometry_msgs/msg/twist.hpp>
-#include <cv_bridge/cv_bridge.h>
+#include <cv_bridge/cv_bridge.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 
 LineFollower::LineFollower(const std::string & node_name,const rclcpp::NodeOptions & node_options) : rclcpp::Node(node_name,node_options){
