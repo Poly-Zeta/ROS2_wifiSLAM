@@ -1,0 +1,26 @@
+# RKO-LIO indoor-optimized configuration for Unitree L2
+# Usage: ros2 launch rko_lio odometry.launch.py config_file:=rko_lio_indoor.yaml
+
+imu_topic: /unilidar/imu
+lidar_topic: /unilidar/cloud
+base_frame: base_link
+odom_topic: /Odometry
+#imu_frame: unilidar_lidar
+
+# Deskewed scan output (for SC_PGO)
+publish_deskewed_scan: true
+deskewed_scan_topic: /rko_lio/frame
+
+# Indoor-optimized parameters
+voxel_size: 0.3                    # 1.0→0.3 (屋内は細かく)
+max_range: 15.0                    # 100→15 (屋内は15m十分)
+min_range: 0.3                     # 1.0→0.3 (近距離も有効活用)
+max_correspondence_distance: 0.2   # 0.5→0.2 (屋内は厳密に)
+max_points_per_voxel: 50           # 20→50 (voxel_size 小さくしたため)
+double_downsample: false           # true→false (L2は64K pts/sと低め)
+
+# Initialization
+initialization_phase: true         # 静止起動時にIMUバイアス補正
+
+# Logging
+log_level: info

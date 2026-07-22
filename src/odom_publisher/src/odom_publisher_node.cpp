@@ -10,7 +10,7 @@ OdomPublisher::OdomPublisher(const rclcpp::NodeOptions & options)
     declare_parameter<std::string>("right_topic", "/i2cReceive/r_wheel_count");
     declare_parameter<std::string>("odom_frame",  "odom");
     declare_parameter<std::string>("base_frame",  "base_link");
-    declare_parameter<bool>("publish_tf", true);
+    declare_parameter<bool>("publish_tf", false);
     declare_parameter<double>("dist_per_count", 7.9353e-5); // m/count
     declare_parameter<double>("tread",          0.155);     // m
 
@@ -34,9 +34,10 @@ OdomPublisher::OdomPublisher(const rclcpp::NodeOptions & options)
         right_topic_, qos,
         std::bind(&OdomPublisher::rightCountCallback, this, std::placeholders::_1));
 
-    odom_pub_ = create_publisher<nav_msgs::msg::Odometry>("odom", rclcpp::QoS{50});
-    tf_broadcaster_ = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
-
+    odom_pub_ = create_publisher<nav_msgs::msg::Odometry>("/wheel/odom", rclcpp::QoS{50});
+    if(publish_tf_){
+        tf_broadcaster_ = std::make_unique<tf2_ros::TransformBroadcaster>(*this);
+    }
     last_time_ = now();
 
     RCLCPP_INFO(get_logger(),

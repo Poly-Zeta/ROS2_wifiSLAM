@@ -93,7 +93,7 @@ void I2CsensorsDriver::onTimer(){
     sensor_msgs::msg::Imu msg_imu;
     // rclcpp::Time t = this->now();
     msg_imu.header.stamp =now();
-    msg_imu.header.frame_id = "imu_frame";
+    msg_imu.header.frame_id = "imu_link";
     msg_imu.angular_velocity.x = dataBuff[0];
     msg_imu.angular_velocity.y = dataBuff[1];
     msg_imu.angular_velocity.z = dataBuff[2];
@@ -104,6 +104,15 @@ void I2CsensorsDriver::onTimer(){
     msg_imu.orientation.y=dataBuff[14];
     msg_imu.orientation.z=dataBuff[15];
     msg_imu.orientation.w=dataBuff[12];
+    msg_imu.orientation_covariance[0]=1e-2;
+    msg_imu.orientation_covariance[4]=1e-2;
+    msg_imu.orientation_covariance[8]=1e-2;
+    msg_imu.angular_velocity_covariance[0]=1e-3;
+    msg_imu.angular_velocity_covariance[4]=1e-3;
+    msg_imu.angular_velocity_covariance[8]=1e-3;
+    msg_imu.linear_acceleration_covariance[0]=1e-1;
+    msg_imu.linear_acceleration_covariance[4]=1e-1;
+    msg_imu.linear_acceleration_covariance[8]=1e-1;
     imu_pub_->publish(msg_imu);
     // gyro_.clear();
     // accel_.clear();
@@ -111,7 +120,7 @@ void I2CsensorsDriver::onTimer(){
     //地磁気
     sensor_msgs::msg::MagneticField msg_mag;
     msg_mag.header.stamp =now();
-    msg_mag.header.frame_id = "mag_frame";
+    msg_mag.header.frame_id = "mag_link";
     msg_mag.magnetic_field.x =dataBuff[3];
     msg_mag.magnetic_field.y =dataBuff[4];
     msg_mag.magnetic_field.z =dataBuff[5];

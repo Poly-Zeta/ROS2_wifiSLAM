@@ -13,7 +13,7 @@ def generate_launch_description():
     # AF を Continuous で起動したい
     AF_MODE = 2   # 0:Manual, 1:Auto, 2:Continuous
 
-    TARGET_FPS = 30
+    TARGET_FPS = 20
     frame_us = int(1_000_000 / TARGET_FPS)
     frame_limits = f"[{frame_us},{frame_us}]"
 
@@ -67,7 +67,7 @@ def generate_launch_description():
             "source /opt/ros/jazzy/setup.bash; "
             "source ~/ros_ws/install/setup.bash; "
             "until ros2 param get /camera FrameDurationLimits >/dev/null 2>&1; do sleep 0.2; done; "
-            "ros2 param set /camera FrameDurationLimits '[33333,33333]'; "
+            f"ros2 param set /camera FrameDurationLimits '{frame_limits}'; "
             "ros2 param get /camera FrameDurationLimits"
         ],
         output="screen",

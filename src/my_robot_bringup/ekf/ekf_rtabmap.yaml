@@ -1,0 +1,59 @@
+ekf_filter_node:
+  ros__parameters:
+    print_diagnostics: true
+    frequency: 30.0
+    sensor_timeout: 0.2
+
+    # ★ RTAB-Map用：2D拘束を外す
+    two_d_mode: false
+
+    publish_tf: true
+
+    map_frame: map
+    odom_frame: odom
+    base_link_frame: base_link
+    world_frame: odom    # RTAB-Mapが map→odom を担当
+
+    # ======================
+    # wheel / track odom
+    # ======================
+    odom0: /wheel/odom
+    odom0_config: [
+      true,  true,  false,   # x, y, z
+      false, false, true,    # roll, pitch, yaw（yawのみ）
+      true,  false, false,   # vx, vy, vz
+      false, false, true,    # vroll, vpitch, vyaw
+      false, false, false
+    ]
+    odom0_differential: false
+    odom0_relative: true
+
+    odom0_pose_rejection_threshold: 5.0
+    odom0_twist_rejection_threshold: 1.0
+
+    # ======================
+    # IMU
+    # ======================
+    imu0: /i2cReceive/imu
+#    imu0_config: [
+#      false, false, false,   # position
+#      false, false, false,    # ★ roll, pitch, yaw を使う
+#      false, false, false,   # velocity
+#      false,  false,  false,    # ★ 角速度も全部使う
+#      false, false, false
+#    ]
+
+    imu0_config: [
+      false, false, false,   # position
+      true,  true,  true,    # ★ roll, pitch, yaw を使う
+      false, false, false,   # velocity
+      true,  true,  true,    # ★ 角速度も全部使う
+      false, false, false
+    ]
+    imu0_differential: false
+    imu0_relative: false
+    imu0_remove_gravitational_acceleration: true
+
+    imu0_pose_rejection_threshold: 0.8
+    imu0_twist_rejection_threshold: 0.8
+

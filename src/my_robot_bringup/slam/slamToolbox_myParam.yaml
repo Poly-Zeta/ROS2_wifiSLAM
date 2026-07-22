@@ -11,11 +11,12 @@ slam_toolbox:
 
     # ROS Parameters
     odom_frame: odom
+    odom_topic: /odometry/filtered
     map_frame: map
     base_frame: base_link
     scan_topic: /scan
     # use_map_saver: true
-    # mode: mapping #localization
+    mode: mapping #localization
 
     # debug_logging: false
     # enable_interactive_mode: true

@@ -22,7 +22,7 @@ def generate_launch_description():
                 'product_name': 'LDLiDAR_LD06',
                 'laser_scan_topic_name': 'scan',
                 'point_cloud_2d_topic_name': 'pointcloud2d',
-                'frame_id': 'laser',
+                'frame_id': 'laser_link',
                 'port_name': port_name,
                 'serial_baudrate': 230400,
                 'laser_scan_dir': True,
